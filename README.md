@@ -25,3 +25,23 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+######################################################################
+
+Pacotes instalados 
+
+npm install -g @angular/cli
+npm install -g json-server
+
+==Comando para iniciar o json-server
+json-server --watch db.json --port 3004
+
+
+##############
+Para startar no Codespace
+
+Iniciar o Angular
+npm run start -- --host 0.0.0.0
+
+Iniciar o JSON-Server
+json-server  db.json --host 0.0.0.0

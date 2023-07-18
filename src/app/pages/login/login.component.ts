@@ -1,15 +1,16 @@
 import { Component, inject } from '@angular/core';
-
 import { FormBuilder, Validators } from '@angular/forms';
-
+import { AutorizacaoService } from 'src/app/service/autorizacao.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent {
   private fb = inject(FormBuilder);
+
   addressForm = this.fb.group({
     company: null,
     firstName: [null, Validators.required],
@@ -22,7 +23,17 @@ export class LoginComponent {
 
   hasUnitNumber = false;
 
+  constructor(private autorizacaoService: AutorizacaoService){}
+
+  loginClick() {
+    if(this.autorizacaoService.obterLoginStatus())
+      this.autorizacaoService.deslogar();
+    else
+      this.autorizacaoService.autorizar();
+  }
+
   onSubmit(): void {
+    this.loginClick();
     alert('Thanks!');
   }
 }
