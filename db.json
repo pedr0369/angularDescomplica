@@ -1,18 +1,36 @@
 {
   "users": [
-      {
-          "id": 1,
-          "firstName": "Bruno Hauck",
-          "email": "bruno@gmail.com",
-          "phone": "123456789",
-          "password": "1345"
-      },
-      {
-          "id": 2,
-          "firstName": "Pedro Teste",
-          "email": "pedro@teste",
-          "phone": "12345",
-          "password": "123456"
-      }
+    {
+      "id": 1,
+      "firstName": "Bruno Hauck",
+      "email": "bruno@gmail.com",
+      "phone": "123456789",
+      "cpf": "111.843.086-75",
+      "password": "1345"
+    },
+    {
+      "id": 2,
+      "firstName": "Pedro Teste",
+      "email": "pedro@teste",
+      "phone": "12345",
+      "cpf": "111.843.086-75",
+      "password": "123456"
+    },
+    {
+      "id": 3,
+      "firstName": "testesste",
+      "phone": "11111111111",
+      "email": "tese@tese",
+      "cpf": "11111111111",
+      "password": "1sadfdfds"
+    },
+    {
+      "id": 4,
+      "firstName": "Saile Recla",
+      "phone": "31999999999",
+      "email": "saile@teste",
+      "cpf": "12345678901",
+      "password": "12345"
+    }
   ]
 }

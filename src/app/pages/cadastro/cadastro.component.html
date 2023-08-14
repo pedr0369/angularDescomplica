@@ -1,5 +1,5 @@
 <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
-  <mat-card class="shipping-card">
+  <mat-card class="shipping-card formCadastro">
     <mat-card-header>
       <mat-card-title>Preencha as informações abaixo para se cadastrar</mat-card-title>
     </mat-card-header>
@@ -14,13 +14,12 @@
             </mat-error>
           </mat-form-field>
         </div>
-      </div>
-      <div class="row">
+
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Email" formControlName="email">
-            <mat-error *ngIf="addressForm.controls['email'].hasError('required')">
-              Email é <strong>obrigatório</strong>
+            <mat-error *ngIf="email.invalid">
+              {{getErrorMessage()}}
             </mat-error>
           </mat-form-field>
         </div>
@@ -28,7 +27,16 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Telefone" formControlName="phone">
+            <input matInput placeholder="CPF" formControlName="cpf" mask="000.000.000-00">
+            <mat-error *ngIf="addressForm.controls['cpf'].hasError('required')">
+              CPF é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Telefone" formControlName="phone" mask="(00) 00000-0000">
             <mat-error *ngIf="addressForm.controls['phone'].hasError('required')">
               Telefone é <strong>obrigatório</strong>
             </mat-error>
@@ -45,10 +53,22 @@
           </mat-form-field>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
       
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+      <button mat-raised-button color="primary" [disabled]="!addressForm.valid" type="submit">Cadastrar</button>
     </mat-card-actions>
   </mat-card>
 </form>

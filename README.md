@@ -45,3 +45,12 @@ npm run start -- --host 0.0.0.0
 
 Iniciar o JSON-Server
 json-server  db.json --host 0.0.0.0
+
+Para gerar componente novo
+ng g component {pasta}/{nomeComponente}
+
+Para gerar um novo guards
+ng g guard {pasta}/{nomeGuards}
+
+Para gerar um novo Service
+ng g service {pasta}/{nomeService}

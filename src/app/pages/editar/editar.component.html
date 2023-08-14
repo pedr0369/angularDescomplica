@@ -1,0 +1,55 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card formCadastro">
+      <mat-card-header>
+        <mat-card-title>Preencha as informações abaixo para se cadastrar</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+  
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Primeiro nome" formControlName="firstName">
+              <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+                Name é <strong>obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Email" formControlName="email">
+              <mat-error *ngIf="email.invalid">
+                {{getErrorMessage()}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Telefone" formControlName="phone">
+              <mat-error *ngIf="addressForm.controls['phone'].hasError('required')">
+                Telefone é <strong>obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Senha" type="password" formControlName="password">
+              <mat-error *ngIf="addressForm.controls['password'].hasError('required')">
+                Senha é <strong>obrigatório</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]="!addressForm.valid" type="submit">Cadastrar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  

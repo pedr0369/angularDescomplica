@@ -13,6 +13,20 @@
             "email": "pedro@teste",
             "phone": "12345",
             "password": "123456"
-        }
+        },
+        {
+          "id": 3,
+          "firstName": "Saile Recla",
+          "email": "saile@teste",
+          "phone": "54321",
+          "password": "123456"
+      },
+      {
+          "id": 4,
+          "firstName": "Ricardo Jonasson",
+          "email": "ricardo@teste",
+          "phone": "123456",
+          "password": "123456"
+      }
     ]
 }

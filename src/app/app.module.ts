@@ -27,6 +27,23 @@ import { SubRouteComponent } from './pages/sub-route/sub-route.component';
 import { Page1Component } from './pages/sub-route/page1/page1.component';
 import { Page2Component } from './pages/sub-route/page2/page2.component';
 import { PrivadoComponent } from './pages/privado/privado.component';
+import { DetalheComponent } from './pages/detalhe/detalhe.component';
+import { ListaSimplesComponent } from './pages/lista-simples/lista-simples.component';
+import { EditarComponent } from './pages/editar/editar.component';
+import { provideNgxMask, NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { UserService } from './service/user.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import { ModalComponent } from './pages/modal/modal.component';
+import { DialogContentExampleDialog } from './pages/modal/modal.component';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -42,7 +59,12 @@ import { PrivadoComponent } from './pages/privado/privado.component';
     SubRouteComponent,
     Page1Component,
     Page2Component,
-    PrivadoComponent
+    PrivadoComponent,
+    DetalheComponent,
+    ListaSimplesComponent,
+    EditarComponent,
+    ModalComponent,
+    DialogContentExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -58,9 +80,21 @@ import { PrivadoComponent } from './pages/privado/privado.component';
     MatSidenavModule,
     MatIconModule,
     HttpClientModule,
-    MatListModule
+    MatListModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatBottomSheetModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
-  providers: [],
+  providers: [provideNgxMask(), UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

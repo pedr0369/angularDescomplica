@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AutorizacaoService {
+  static obterLoginStatus() {
+    throw new Error('Method not implemented.');
+  }
 
   autorizado = false;
   constructor() { }
