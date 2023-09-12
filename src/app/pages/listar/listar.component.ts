@@ -15,7 +15,7 @@ import { UserService } from 'src/app/service/user.service';
 export class ListarComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<ListarItem>;
+  @ViewChild(MatTable, { static: false }) table!: MatTable<User>;
   dataSource = new MatTableDataSource <User> ([]);
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -23,12 +23,9 @@ export class ListarComponent implements AfterViewInit {
   users: User[] = [];
   displayedColumns = ['id', 'firstName', 'email', 'phone', 'cpf'];
 
-  ngAfterViewInit(): void {
-    //this.dataSource.sort = this.sort;
-    //this.dataSource.paginator = this.paginator;
-    //this.table.dataSource = this.dataSource;
+  ngOnInit() {
+    this.getUsers()
   }
-
 
   getUsers() : void {
     this.service.getUSers().subscribe(
@@ -36,6 +33,9 @@ export class ListarComponent implements AfterViewInit {
         next: (response) => {
           console.log(response);
           this.dataSource = new MatTableDataSource<User> (response);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+          console.log('RESPONSE', response);
         },
         error: (erro: any) => {
           console.log('Ocorreu um erro');
@@ -44,4 +44,11 @@ export class ListarComponent implements AfterViewInit {
       }
     )
   }
+
+  ngAfterViewInit() {
+    //this.dataSource.sort = this.sort;
+    //this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
+  }
+
 }

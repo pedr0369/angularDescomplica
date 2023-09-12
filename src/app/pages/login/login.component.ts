@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutorizacaoService } from 'src/app/service/autorizacao.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,7 @@ export class LoginComponent {
     return this.email.hasError('email') ? 'Você deve preencher um valor para o email!' : '';
   }
 
-  constructor(private autorizacaoService: AutorizacaoService, private router : Router){}
+  constructor(private autorizacaoService: AutorizacaoService, private router : Router, private service: UserService){}
 
   loginClick() {
     if(this.autorizacaoService.obterLoginStatus())
@@ -37,7 +38,21 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    this.loginClick();
-    this.router.navigate(['privado']);
+    if(this.autorizacaoService.obterLoginStatus()){
+      this.autorizacaoService.deslogar();
+    }
+    else{
+      //this.autorizacaoService.autorizar();
+      this.service.login({ user:'1234' }).subscribe({
+        next: (response) => {
+          
+          
+        },
+        error: (erro:any) => {
+          console.log(erro);
+          alert('Ocorreu um erro');
+        }
+      });
+    }
   }
 }

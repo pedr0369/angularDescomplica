@@ -32,7 +32,8 @@ const routes: Routes = [
       {path:'page2', component:Page2Component}
     ]
   },
-  {path:'privado', component:PrivadoComponent, canActivate: [autorizadoGuard]}
+  {path:'privado', component:PrivadoComponent, canActivate: [autorizadoGuard]},
+  { path: 'pages/lazzy', loadChildren: () => import('./pages/lazzy/lazzy.module').then(m => m.LazzyModule) }
 
 ];
 

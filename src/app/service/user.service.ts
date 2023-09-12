@@ -14,11 +14,16 @@ export class UserService {
 
   //BASE_URL: string = 'http://0.0.0.0:3000/';
   BASE_URL: string = 'https://pedr0369-glowing-computing-machine-gg5gq45qvvcwxg6-3000.app.github.dev/';
+  FIREBASE_URL: string = '';
 
   constructor(private http:HttpClient) { }
 
   getUSers(): Observable<User[]>{
     return this.http.get<User[]>(this.BASE_URL + 'users')
+  }
+
+  login(data:any): Observable<User>{
+    return this.http.post<User>(this.FIREBASE_URL + 'users', data, httpOptions)
   }
 
   addUser(user:any): Observable<User>{
